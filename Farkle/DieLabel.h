@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol DieLabelDelegate <NSObject>
+@protocol DieLabelDelegate  <NSObject>
 
 @end
 
+
 @interface DieLabel : UILabel
 
-@property (weak, nonatomic) id <DieLabelDelegate> delegate;
+@property (nonatomic, weak) id <DieLabelDelegate> delegate;
 
 - (void)roll;
 

@@ -13,16 +13,7 @@
 - (void)roll
 {
     int randomNumber = arc4random_uniform(6) + 1;
-}
-
-
-- (IBAction)onTapped:(UITapGestureRecognizer *)sender
-{
-
-    
-
-
-
+    self.text = [NSString stringWithFormat:@"%d", randomNumber];
 }
 
 

@@ -10,6 +10,7 @@
 
 @interface RootViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *dieTapped;
 
 @end
 

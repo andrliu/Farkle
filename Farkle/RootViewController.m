@@ -10,9 +10,10 @@
 #import "DieLabel.h"
 
 @interface RootViewController () <DieLabelDelegate>
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labelCollection;
-@property DieLabel *myDie;
+
+@property (strong, nonatomic) IBOutletCollection(DieLabel) NSArray *labelCollection;
 @property NSMutableArray *dice;
+
 
 @end
 
@@ -21,12 +22,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.myDie.delegate = self;
+    for (DieLabel *label in self.labelCollection)
+    {
+        label.delegate = self;
+    }
+
 }
 
 - (IBAction)onRollButtonPressed:(UIButton *)sender
 {
-    self.labelCollection.text = [self.myDie roll];
+    for (DieLabel *label in self.labelCollection)
+    {
+        [label roll];
+    }
+}
+
+-(void)onTapped:(UITapGestureRecognizer *)sender
+{
+    for (DieLabel *label in self.labelCollection)
+    {
+        if (label) {
+            label.userInteractionEnabled = NO;
+        }
+    }
 }
 
 @end
