@@ -63,65 +63,6 @@
         }
     }
     self.tapCount++;
-
-//    for (DieLabel *label in self.dice)
-//    {
-//        if ([label.text isEqual:@"1"])
-//        {
-//            self.oneCount++;
-//        }
-//        if
-//            ([label.text isEqual:@"2"])
-//        {
-//            self.twoCount++;
-//        }
-//        if
-//            ([label.text isEqual:@"3"])
-//        {
-//            self.threeCount++;
-//        }
-//        if
-//            ([label.text isEqual:@"4"])
-//        {
-//            self.fourCount++;
-//        }
-//        if
-//            ([label.text isEqual:@"5"])
-//        {
-//            self.fiveCount++;
-//        }
-//        if
-//            ([label.text isEqual:@"6"])
-//        {
-//            self.sixCount++;
-//        }
-//        if (self.oneCount == 3)
-//        {
-//            self.userScore.text=@"100";
-//        }
-//        if (self.twoCount == 3)
-//        {
-//            self.userScore.text=@"200";
-//        }
-//        if (self.threeCount == 3)
-//        {
-//            self.userScore.text=@"300";
-//        }
-//        if (self.fourCount == 3)
-//        {
-//            self.userScore.text=@"400";
-//        }
-//        if (self.fiveCount == 3)
-//        {
-//            self.userScore.text=@"500";
-//        }
-//        if (self.sixCount == 3)
-//        {
-//            self.userScore.text=@"600";
-//        }
-//    }
-
-
 }
 
 -(void)dieTapped:(UILabel *)label
@@ -140,28 +81,23 @@
         {
             self.oneCount++;
         }
-        if
-            ([label.text isEqual:@"2"])
+        if ([label.text isEqual:@"2"])
         {
             self.twoCount++;
         }
-        if
-            ([label.text isEqual:@"3"])
+        if ([label.text isEqual:@"3"])
         {
             self.threeCount++;
         }
-        if
-            ([label.text isEqual:@"4"])
+        if ([label.text isEqual:@"4"])
         {
             self.fourCount++;
         }
-        if
-            ([label.text isEqual:@"5"])
+        if ([label.text isEqual:@"5"])
         {
             self.fiveCount++;
         }
-        if
-            ([label.text isEqual:@"6"])
+        if ([label.text isEqual:@"6"])
         {
             self.sixCount++;
         }
@@ -174,30 +110,31 @@
         if (self.twoCount == 3)
         {
             self.score=self.score+200;
-                        self.twoCount = 0;
+            self.twoCount = 0;
         }
         if (self.threeCount == 3)
         {
             self.score=self.score+300;
-                        self.threeCount = 0;
+            self.threeCount = 0;
         }
         if (self.fourCount == 3)
         {
             self.score=self.score+400;
-                        self.fourCount = 0;
+            self.fourCount = 0;
         }
         if (self.fiveCount == 3)
         {
             self.score=self.score+500;
-                        self.fiveCount = 0;
+            self.fiveCount = 0;
         }
         if (self.sixCount == 3)
         {
             self.score=self.score+600;
-                        self.sixCount = 0;
+            self.sixCount = 0;
         }
 
         self.userScore.text=[NSString stringWithFormat:@"%d", self.score];
+
     }
 }
 

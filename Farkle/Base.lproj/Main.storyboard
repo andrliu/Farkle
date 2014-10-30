@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -16,10 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK1-8Q-lQz" customClass="DieLabel">
-                                <rect key="frame" x="59" y="110" width="30" height="30"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK1-8Q-lQz" customClass="DieLabel">
+                                <rect key="frame" x="65" y="100" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="03W-Qx-V0f"/>
+                                    <constraint firstAttribute="height" constant="30" id="G5b-EP-KZ2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -27,10 +32,14 @@
                                     <outletCollection property="gestureRecognizers" destination="alk-7l-6Zf" appends="YES" id="FnL-m0-fgG"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drb-ot-Lek" customClass="DieLabel">
-                                <rect key="frame" x="124" y="114" width="30" height="30"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drb-ot-Lek" customClass="DieLabel">
+                                <rect key="frame" x="145" y="100" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EXY-Br-4sY"/>
+                                    <constraint firstAttribute="width" constant="30" id="bYs-Rt-TRh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -38,10 +47,14 @@
                                     <outletCollection property="gestureRecognizers" destination="aZj-Bh-wd6" appends="YES" id="2l2-e4-JCY"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glR-Uk-fuB" customClass="DieLabel">
-                                <rect key="frame" x="53" y="174" width="30" height="30"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glR-Uk-fuB" customClass="DieLabel">
+                                <rect key="frame" x="65" y="200" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="HH5-Fm-OSm"/>
+                                    <constraint firstAttribute="height" constant="30" id="uYL-gV-bbg"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -49,10 +62,14 @@
                                     <outletCollection property="gestureRecognizers" destination="CyY-nF-XaF" appends="YES" id="ZdM-eL-DOo"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kz-dY-11h" customClass="DieLabel">
-                                <rect key="frame" x="124" y="173" width="30" height="30"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kz-dY-11h" customClass="DieLabel">
+                                <rect key="frame" x="145" y="200" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="tTV-3O-y2v"/>
+                                    <constraint firstAttribute="height" constant="30" id="vcT-cK-aTR"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -60,10 +77,14 @@
                                     <outletCollection property="gestureRecognizers" destination="euO-VH-kAi" appends="YES" id="Kcc-bj-GCX"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4q-NY-Nbx" customClass="DieLabel">
-                                <rect key="frame" x="210" y="168" width="30" height="30"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4q-NY-Nbx" customClass="DieLabel">
+                                <rect key="frame" x="225" y="200" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Lcw-sg-f8t"/>
+                                    <constraint firstAttribute="width" constant="30" id="qTV-bH-zjT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -71,8 +92,12 @@
                                     <outletCollection property="gestureRecognizers" destination="Unu-cD-uwa" appends="YES" id="4i7-pp-dOa"/>
                                 </connections>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fq-kZ-tgQ">
-                                <rect key="frame" x="137" y="347" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fq-kZ-tgQ">
+                                <rect key="frame" x="130" y="350" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Qv7-Ug-DvV"/>
+                                    <constraint firstAttribute="height" constant="30" id="XTX-Ob-WUN"/>
+                                </constraints>
                                 <state key="normal" title="Roll">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -80,10 +105,14 @@
                                     <action selector="onRollButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9F1-33-Gba"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xc8-xf-Nd9" customClass="DieLabel">
-                                <rect key="frame" x="210" y="114" width="30" height="30"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xc8-xf-Nd9" customClass="DieLabel">
+                                <rect key="frame" x="225" y="100" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="69W-nB-N33"/>
+                                    <constraint firstAttribute="width" constant="30" id="tQR-eJ-WdD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -91,14 +120,36 @@
                                     <outletCollection property="gestureRecognizers" destination="X0T-bq-Vr0" appends="YES" id="i8O-dJ-nWC"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLt-E7-AVl">
-                                <rect key="frame" x="83" y="54" width="139" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLt-E7-AVl">
+                                <rect key="frame" x="110" y="30" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="b8J-xj-exC"/>
+                                    <constraint firstAttribute="width" constant="100" id="rqI-an-HFl"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PLt-E7-AVl" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="30" id="3zu-AP-602"/>
+                            <constraint firstItem="B4q-NY-Nbx" firstAttribute="leading" secondItem="6kz-dY-11h" secondAttribute="trailing" constant="50" id="6fW-yI-yWp"/>
+                            <constraint firstItem="6kz-dY-11h" firstAttribute="leading" secondItem="glR-Uk-fuB" secondAttribute="trailing" constant="50" id="8F5-sk-1HO"/>
+                            <constraint firstItem="drb-ot-Lek" firstAttribute="leading" secondItem="lK1-8Q-lQz" secondAttribute="trailing" constant="50" id="MWq-WH-xOb"/>
+                            <constraint firstItem="Xc8-xf-Nd9" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="100" id="OEn-qu-olV"/>
+                            <constraint firstItem="B4q-NY-Nbx" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="200" id="Yix-yN-sl6"/>
+                            <constraint firstAttribute="centerX" secondItem="0Fq-kZ-tgQ" secondAttribute="centerX" id="fkL-ol-ZZj"/>
+                            <constraint firstItem="6kz-dY-11h" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="200" id="gvk-XM-xlu"/>
+                            <constraint firstItem="0Fq-kZ-tgQ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="350" id="hO9-b8-55i"/>
+                            <constraint firstAttribute="centerX" secondItem="PLt-E7-AVl" secondAttribute="centerX" id="iZI-Ra-rVt"/>
+                            <constraint firstItem="lK1-8Q-lQz" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="100" id="mZp-EX-QB4"/>
+                            <constraint firstItem="Xc8-xf-Nd9" firstAttribute="leading" secondItem="drb-ot-Lek" secondAttribute="trailing" constant="50" id="nyB-h7-8H6"/>
+                            <constraint firstAttribute="centerX" secondItem="drb-ot-Lek" secondAttribute="centerX" id="oG1-IX-iCx"/>
+                            <constraint firstItem="glR-Uk-fuB" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="200" id="oiF-9x-rAx"/>
+                            <constraint firstItem="drb-ot-Lek" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="100" id="tlo-5d-14h"/>
+                            <constraint firstAttribute="centerX" secondItem="6kz-dY-11h" secondAttribute="centerX" id="x85-r4-Sss"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="userScore" destination="PLt-E7-AVl" id="law-Yu-SJa"/>
