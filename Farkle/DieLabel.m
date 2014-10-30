@@ -17,6 +17,12 @@
 }
 
 
+-(IBAction)onTapped:(UITapGestureRecognizer *)sender
+{
+    [self.delegate dieTapped:self];
+}
+
+
 
 
 @end

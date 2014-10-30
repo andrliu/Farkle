@@ -12,7 +12,9 @@
 @interface RootViewController () <DieLabelDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(DieLabel) NSArray *labelCollection;
-@property NSMutableArray *dice;
+@property (strong, nonatomic) NSMutableArray *dice;
+@property (strong, nonatomic) IBOutlet UILabel *userScore;
+@property int tapCount;
 
 
 @end
@@ -27,24 +29,48 @@
         label.delegate = self;
     }
 
+    self.dice = [@[] mutableCopy];
+
+    self.tapCount = 0;
+
 }
 
 - (IBAction)onRollButtonPressed:(UIButton *)sender
 {
-    for (DieLabel *label in self.labelCollection)
+
+    if (self.tapCount == 0)
     {
-        [label roll];
+        for (DieLabel *label in self.labelCollection)
+        {
+            [label roll];
+        }
+    }
+    else
+        {
+        for (DieLabel *label in self.dice)
+        {
+            [label roll];
+        }
+
+        }
+    self.tapCount++;
+
+}
+
+-(void)dieTapped:(UILabel *)label
+{
+    if ([self.dice containsObject:label])
+    {
+        nil;
+    }
+
+    else
+    {
+        label.backgroundColor = [UIColor redColor];
+        [self.dice addObject:label];
     }
 }
 
--(void)onTapped:(UITapGestureRecognizer *)sender
-{
-    for (DieLabel *label in self.labelCollection)
-    {
-        if (label) {
-            label.userInteractionEnabled = NO;
-        }
-    }
-}
+
 
 @end

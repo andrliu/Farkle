@@ -10,6 +10,8 @@
 
 @protocol DieLabelDelegate  <NSObject>
 
+-(void)dieTapped:(UILabel *)label;
+
 @end
 
 
