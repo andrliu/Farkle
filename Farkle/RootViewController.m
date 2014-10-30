@@ -16,7 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *userScore;
 @property int tapCount;
 
-
 @end
 
 @implementation RootViewController
@@ -30,9 +29,7 @@
     }
 
     self.dice = [@[] mutableCopy];
-
     self.tapCount = 0;
-
 }
 
 - (IBAction)onRollButtonPressed:(UIButton *)sender
@@ -40,35 +37,34 @@
 
     if (self.tapCount == 0)
     {
-        for (DieLabel *label in self.labelCollection)
+    self.dice = [NSMutableArray arrayWithArray:self.labelCollection];
+
+
+        for (DieLabel *label in self.dice)
         {
             [label roll];
         }
     }
     else
-        {
+    {
+
         for (DieLabel *label in self.dice)
         {
             [label roll];
         }
+    }
 
-        }
     self.tapCount++;
+
 
 }
 
 -(void)dieTapped:(UILabel *)label
 {
-    if ([self.dice containsObject:label])
-    {
-        nil;
-    }
 
-    else
-    {
-        label.backgroundColor = [UIColor redColor];
-        [self.dice addObject:label];
-    }
+    label.backgroundColor = [UIColor redColor];
+    [self.dice removeObject:label];
+
 }
 
 
