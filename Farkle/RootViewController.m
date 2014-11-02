@@ -13,20 +13,23 @@
 
 @property (strong, nonatomic) IBOutletCollection(DieLabel) NSArray *labelCollection;
 @property (strong, nonatomic) NSMutableArray *dice;
-@property (strong, nonatomic) IBOutlet UILabel *userScore;
-@property int tapCount;
-@property int oneCount;
-@property int twoCount;
-@property int threeCount;
-@property int fourCount;
-@property int fiveCount;
-@property int sixCount;
-@property int oneTapCount;
-@property int twoTapCount;
-@property int threeTapCount;
-@property int fourTapCount;
-@property int fiveTapCount;
-@property int sixTapCount;
+@property (weak, nonatomic) IBOutlet UILabel *userScore;
+@property (weak, nonatomic) IBOutlet UILabel *anotherUserScore;
+@property (weak, nonatomic) IBOutlet UILabel *userDisplay;
+@property (weak, nonatomic) IBOutlet UILabel *anotherUserDisplay;
+@property int rollButtonTapCount;
+@property int diceOneCount;
+@property int diceTwoCount;
+@property int diceThreeCount;
+@property int diceFourCount;
+@property int diceFiveCount;
+@property int diceSixCount;
+@property int diceOneScoreCount;
+@property int diceTwoScoreCount;
+@property int diceThreeScoreCount;
+@property int diceFourScoreCount;
+@property int diceFiveScoreCount;
+@property int diceSixScoreCount;
 @property int score;
 
 @end
@@ -39,16 +42,247 @@
     for (DieLabel *label in self.labelCollection)
     {
         label.delegate = self;
+        label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blockDice"]];
     }
-    self.dice = [@[] mutableCopy];
-    self.tapCount = 0;
-    self.oneCount = 0;
-    self.twoCount = 0;
-    self.threeCount = 0;
-    self.fourCount = 0;
-    self.fiveCount = 0;
-    self.sixCount = 0;
+    self.userDisplay.textColor = [UIColor blackColor];
+    self.anotherUserDisplay.textColor = [UIColor clearColor];
+    [self resetScoreCount];
+    [self resetDiceCount];
     self.score = 0;
+    self.rollButtonTapCount = 0;
+}
+
+- (void)resetDiceCount
+{
+    self.diceOneCount = 0;
+    self.diceTwoCount = 0;
+    self.diceThreeCount = 0;
+    self.diceFourCount = 0;
+    self.diceFiveCount = 0;
+    self.diceSixCount = 0;
+}
+
+- (void)resetScoreCount
+{
+    self.diceOneScoreCount = 0;
+    self.diceTwoScoreCount = 0;
+    self.diceThreeScoreCount = 0;
+    self.diceFourScoreCount = 0;
+    self.diceFiveScoreCount = 0;
+    self.diceSixScoreCount = 0;
+}
+
+- (BOOL)hotDice
+{
+    for (DieLabel *label in self.dice)
+    {
+        if ([label.text isEqual:@"1"])
+        {
+            self.diceOneCount++;
+            if (self.diceOneCount ==6)
+            {
+                return YES;
+            }
+        }
+        else if ([label.text isEqual:@"2"])
+        {
+            self.diceTwoCount++;
+            if (self.diceTwoCount == 6)
+            {
+                return YES;
+            }
+        }
+        else if ([label.text isEqual:@"3"])
+        {
+            self.diceThreeCount++;
+            if (self.diceThreeCount == 6)
+            {
+                return YES;
+            }
+        }
+        else if ([label.text isEqual:@"4"])
+        {
+            self.diceFourCount++;
+            if (self.diceFourCount == 6)
+            {
+                return YES;
+            }
+        }
+        else if ([label.text isEqual:@"5"])
+        {
+            self.diceFiveCount++;
+            if (self.diceFiveCount == 6)
+            {
+                return YES;
+            }
+        }
+        else if ([label.text isEqual:@"6"])
+        {
+            self.diceSixCount++;
+            if (self.diceSixCount == 6)
+            {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
+- (void)winningScore
+{
+    int bankScore = 0;
+    if (self.diceOneScoreCount >= 1)
+    {
+        if (self.diceOneScoreCount == 6)
+        {
+            bankScore = bankScore+2000;
+        }
+        else if (self.diceOneScoreCount == 5)
+        {
+            bankScore = bankScore+1200;
+        }
+        else if (self.diceOneScoreCount == 4)
+        {
+            bankScore = bankScore+1100;
+        }
+        else if (self.diceOneScoreCount == 3)
+        {
+            bankScore = bankScore+1000;
+        }
+        else if (self.diceOneScoreCount == 2)
+        {
+            bankScore = bankScore+200;
+        }
+        else
+        {
+            bankScore = bankScore+100;
+        }
+    }
+    if (self.diceTwoScoreCount >= 3)
+    {
+        if (self.diceTwoScoreCount == 6)
+        {
+            bankScore = bankScore+400;
+        }
+        else
+        {
+            bankScore = bankScore+200;
+        }
+    }
+    if (self.diceThreeScoreCount >= 3)
+    {
+        if (self.diceThreeScoreCount == 6)
+        {
+            bankScore = bankScore+600;
+        }
+        else
+        {
+            bankScore = bankScore+300;
+        }
+    }
+    if (self.diceFourScoreCount >= 3)
+    {
+        if (self.diceFourScoreCount == 6)
+        {
+            bankScore = bankScore+800;
+        }
+        else
+        {
+            bankScore = bankScore+400;
+        }
+    }
+    if (self.diceFiveScoreCount >= 1)
+    {
+        if (self.diceFiveScoreCount == 6)
+        {
+            bankScore = bankScore+1000;
+        }
+        else if (self.diceFiveScoreCount == 5)
+        {
+            bankScore = bankScore+600;
+        }
+        else if (self.diceFiveScoreCount == 4)
+        {
+            bankScore = bankScore+550;
+        }
+        else if (self.diceFiveScoreCount == 3)
+        {
+            bankScore = bankScore+500;
+        }
+        else if (self.diceFiveScoreCount == 2)
+        {
+            bankScore = bankScore+100;
+        }
+        else
+        {
+            bankScore = bankScore+50;
+        }
+    }
+    if (self.diceSixScoreCount >= 3)
+    {
+        if (self.diceSixScoreCount == 6)
+        {
+            bankScore = bankScore+1200;
+        }
+        else
+        {
+            bankScore = bankScore+600;
+        }
+    }
+    [self resetScoreCount];
+
+    self.score = self.score + bankScore;
+
+    if (self.userDisplay.textColor == [UIColor blackColor])
+    {
+        self.userScore.text = [NSString stringWithFormat:@"%d", self.score];
+    }
+    else if (self.anotherUserDisplay.textColor == [UIColor blackColor])
+    {
+        self.anotherUserScore.text = [NSString stringWithFormat:@"%d", self.score];
+    }
+
+    bankScore = 0;
+
+    if (self.dice.count == 0)
+    {
+        [self farkleAlert];
+    }
+}
+
+- (void)farkleAlert
+{
+    UIAlertController *farkleSign = [UIAlertController alertControllerWithTitle:@""
+                                                                       message: @"MotherFarkle"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *bankScoreButton = [UIAlertAction actionWithTitle:@"Switch Player"
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction *action)
+                                                            {
+                                                                [self resetScoreCount];
+                                                                [self resetDiceCount];
+                                                                self.rollButtonTapCount = 0;
+                                                                self.score = 0;
+                                                                if (self.userDisplay.textColor == [UIColor blackColor])
+                                                                {
+                                                                    self.userDisplay.textColor = [UIColor clearColor];
+                                                                    self.anotherUserDisplay.textColor = [UIColor blackColor];
+                                                                }
+                                                                else if (self.anotherUserDisplay.textColor == [UIColor blackColor])
+                                                                {
+                                                                    self.userDisplay.textColor = [UIColor blackColor];
+                                                                    self.anotherUserDisplay.textColor = [UIColor clearColor];
+                                                                }
+                                                                self.dice = [NSMutableArray arrayWithArray:self.labelCollection];
+                                                                for (DieLabel *label in self.dice)
+                                                                {
+                                                                    label.text = [NSString stringWithFormat:@"0"];
+                                                                    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blockDice"]];
+                                                                };
+                                                            }];
+    [farkleSign addAction:bankScoreButton];
+    [self presentViewController: farkleSign animated:YES completion:nil];
 }
 
 - (BOOL)keepPlaying
@@ -57,67 +291,71 @@
     {
         if ([label.text isEqual:@"1"])
         {
-            self.oneCount++;
-            if (self.oneCount >= 1)
+            self.diceOneCount++;
+            if (self.diceOneCount == 1)
             {
                 return YES;
             }
         }
-        if ([label.text isEqual:@"2"])
+        else if ([label.text isEqual:@"5"])
         {
-            self.twoCount++;
-            if (self.twoCount == 3)
+            self.diceFiveCount++;
+            if (self.diceFiveCount == 1)
             {
                 return YES;
             }
         }
-        if ([label.text isEqual:@"3"])
+        else if ([label.text isEqual:@"2"])
         {
-            self.threeCount++;
-            if (self.threeCount == 3)
+            self.diceTwoCount++;
+            if (self.diceTwoCount == 3)
+            {
+                return YES;
+            }
+        }
+        else if ([label.text isEqual:@"3"])
+        {
+            self.diceThreeCount++;
+            if (self.diceThreeCount == 3)
             {
                 return YES;
             }
 
         }
-        if ([label.text isEqual:@"4"])
+        else if ([label.text isEqual:@"4"])
         {
-            self.fourCount++;
-            if (self.fourCount == 3)
+            self.diceFourCount++;
+            if (self.diceFourCount == 3)
             {
                 return YES;
             }
         }
-        if ([label.text isEqual:@"5"])
+        else if ([label.text isEqual:@"6"])
         {
-            self.fiveCount++;
-            if (self.fiveCount == 1)
+            self.diceSixCount++;
+            if (self.diceSixCount == 3)
             {
                 return YES;
             }
         }
-        if ([label.text isEqual:@"6"])
-        {
-            self.sixCount++;
-            if (self.sixCount == 3)
-            {
-                return YES;
-            }
-        }
-
+        [self resetDiceCount];
     }
     return NO;
 }
 
 - (IBAction)onRollButtonPressed:(UIButton *)sender
 {
-    if (self.tapCount == 0)
+    if (self.rollButtonTapCount == 0)
     {
         self.dice = [NSMutableArray arrayWithArray:self.labelCollection];
         for (DieLabel *label in self.dice)
         {
             [label roll];
-
+        }
+        if ([self hotDice])
+        {
+            self.score = self.score + 1000;
+            self.rollButtonTapCount = 0;
         }
     }
     else
@@ -125,101 +363,68 @@
         for (DieLabel *label in self.dice)
         {
             [label roll];
-
         }
     }
 
-    if([self keepPlaying])
+    if(![self keepPlaying])
     {
-        NSLog(@"keepplay");
-        ///create alert
+        [self farkleAlert];
     }
-    else{
-        NSLog(@"lose");
-    }
-    self.tapCount++;
-
+    self.rollButtonTapCount++;
 }
-
 
 -(void)dieTapped:(UILabel *)label
 {
-    if (self.tapCount == 0)
+    if (self.rollButtonTapCount == 0)
     {
         nil;
     }
     else
     {
-    label.backgroundColor = [UIColor redColor];
-    [self.dice removeObject:label];
-        int i = self.tapCount;
+            if ([label.text isEqual:@"1"])
+            {
+                label.text = [NSString stringWithFormat:@"0"];
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blockDice"]];
+                self.diceOneScoreCount++;
+            }
+            if ([label.text isEqual:@"2"])
+            {
+                label.text = [NSString stringWithFormat:@"0"];
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blockDice"]];
+                self.diceTwoScoreCount++;
+            }
+            if ([label.text isEqual:@"3"])
+            {
+                label.text = [NSString stringWithFormat:@"0"];
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blockDice"]];
+                self.diceThreeScoreCount++;
+            }
+            if ([label.text isEqual:@"4"])
+            {
+                label.text = [NSString stringWithFormat:@"0"];
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blockDice"]];
+                self.diceFourScoreCount++;
+            }
+            if ([label.text isEqual:@"5"])
+            {
+                label.text = [NSString stringWithFormat:@"0"];
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blockDice"]];
+                self.diceFiveScoreCount++;
+            }
+            if ([label.text isEqual:@"6"])
+            {
+                label.text = [NSString stringWithFormat:@"0"];
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"blockDice"]];
+                self.diceSixScoreCount++;
+            }
 
-
-        if ([label.text isEqual:@"1"])
-        {
-            self.oneTapCount++;
-        }
-        if ([label.text isEqual:@"2"])
-        {
-            self.twoTapCount++;
-        }
-        if ([label.text isEqual:@"3"])
-        {
-            self.threeTapCount++;
-        }
-        if ([label.text isEqual:@"4"])
-        {
-            self.fourTapCount++;
-        }
-        if ([label.text isEqual:@"5"])
-        {
-            self.fiveTapCount++;
-        }
-        if ([label.text isEqual:@"6"])
-        {
-            self.sixTapCount++;
-        }
-
-        if (self.oneTapCount == 1)
-        {
-            self.score = self.score+100;
-            self.oneTapCount = 0;
-        }
-
-        if (self.oneTapCount == 3)
-        {
-            self.score = self.score+1000;
-            self.oneTapCount = 0;
-        }
-        if (self.twoTapCount == 3)
-        {
-            self.score = self.score+200;
-            self.twoTapCount = 0;
-        }
-        if (self.threeTapCount == 3)
-        {
-            self.score = self.score+300;
-            self.threeTapCount = 0;
-        }
-        if (self.fourTapCount == 3)
-        {
-            self.score = self.score+400;
-            self.fourTapCount = 0;
-        }
-        if (self.fiveTapCount == 3)
-        {
-            self.score = self.score+500;
-            self.fiveTapCount = 0;
-        }
-        if (self.sixTapCount == 3)
-        {
-            self.score = self.score+600;
-            self.sixTapCount = 0;
-        }
-
-        self.userScore.text=[NSString stringWithFormat:@"%d", self.score];
-
+            [self.dice removeObject:label];
     }
+}
+
+- (IBAction)backScoreOnButtonPressed:(UIButton *)sender
+{
+    [self winningScore];
 }
 
 

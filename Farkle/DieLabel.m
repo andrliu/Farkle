@@ -7,13 +7,37 @@
 //
 
 #import "DieLabel.h"
-
+#import  <UIKit/UIKit.h>
 @implementation DieLabel
 
 - (void)roll
 {
     int randomNumber = arc4random_uniform(6) + 1;
     self.text = [NSString stringWithFormat:@"%d", randomNumber];
+    if ([self.text isEqual: @"1"])
+    {
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceOne"]];
+    }
+    else if ([self.text isEqual: @"2"])
+    {
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceTwo"]];
+    }
+    else if ([self.text isEqual: @"3"])
+    {
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceThree"]];
+    }
+    else if ([self.text isEqual: @"4"])
+    {
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceFour"]];
+    }
+    else if ([self.text isEqual: @"5"])
+    {
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceFive"]];
+    }
+    else if ([self.text isEqual: @"6"])
+    {
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceSix"]];
+    }
 }
 
 
