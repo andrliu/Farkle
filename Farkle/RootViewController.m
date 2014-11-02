@@ -74,58 +74,39 @@
 
 - (BOOL)hotDice
 {
-    for (DieLabel *label in self.dice)
+    if (self.diceOneCount == 6)
     {
-        if ([label.text isEqual:@"1"])
-        {
-            self.diceOneCount++;
-            if (self.diceOneCount ==6)
-            {
-                return YES;
-            }
-        }
-        else if ([label.text isEqual:@"2"])
-        {
-            self.diceTwoCount++;
-            if (self.diceTwoCount == 6)
-            {
-                return YES;
-            }
-        }
-        else if ([label.text isEqual:@"3"])
-        {
-            self.diceThreeCount++;
-            if (self.diceThreeCount == 6)
-            {
-                return YES;
-            }
-        }
-        else if ([label.text isEqual:@"4"])
-        {
-            self.diceFourCount++;
-            if (self.diceFourCount == 6)
-            {
-                return YES;
-            }
-        }
-        else if ([label.text isEqual:@"5"])
-        {
-            self.diceFiveCount++;
-            if (self.diceFiveCount == 6)
-            {
-                return YES;
-            }
-        }
-        else if ([label.text isEqual:@"6"])
-        {
-            self.diceSixCount++;
-            if (self.diceSixCount == 6)
-            {
-                return YES;
-            }
-        }
+        return YES;
     }
+
+    else if (self.diceTwoCount == 6)
+    {
+        return YES;
+    }
+
+    else if (self.diceThreeCount == 6)
+    {
+        return YES;
+    }
+
+    else if (self.diceFourCount == 6)
+    {
+        return YES;
+    }
+
+    else if (self.diceFiveCount == 6)
+    {
+        return YES;
+    }
+
+    else if (self.diceSixCount == 6)
+    {
+        return YES;
+    }
+    else
+    {
     return NO;
+    }
 }
 
 - (void)winningScore
@@ -137,23 +118,23 @@
         {
             bankScore = bankScore+2000;
         }
-        else if (self.diceOneScoreCount == 5)
+        if (self.diceOneScoreCount == 5)
         {
             bankScore = bankScore+1200;
         }
-        else if (self.diceOneScoreCount == 4)
+        if (self.diceOneScoreCount == 4)
         {
             bankScore = bankScore+1100;
         }
-        else if (self.diceOneScoreCount == 3)
+        if (self.diceOneScoreCount == 3)
         {
             bankScore = bankScore+1000;
         }
-        else if (self.diceOneScoreCount == 2)
+        if (self.diceOneScoreCount == 2)
         {
             bankScore = bankScore+200;
         }
-        else
+        if (self.diceOneScoreCount == 1)
         {
             bankScore = bankScore+100;
         }
@@ -197,23 +178,23 @@
         {
             bankScore = bankScore+1000;
         }
-        else if (self.diceFiveScoreCount == 5)
+        if (self.diceFiveScoreCount == 5)
         {
             bankScore = bankScore+600;
         }
-        else if (self.diceFiveScoreCount == 4)
+        if (self.diceFiveScoreCount == 4)
         {
             bankScore = bankScore+550;
         }
-        else if (self.diceFiveScoreCount == 3)
+        if (self.diceFiveScoreCount == 3)
         {
             bankScore = bankScore+500;
         }
-        else if (self.diceFiveScoreCount == 2)
+        if (self.diceFiveScoreCount == 2)
         {
             bankScore = bankScore+100;
         }
-        else
+        if (self.diceFiveScoreCount == 1)
         {
             bankScore = bankScore+50;
         }
@@ -229,6 +210,7 @@
             bankScore = bankScore+600;
         }
     }
+
     [self resetScoreCount];
 
     self.score = self.score + bankScore;
@@ -246,6 +228,7 @@
 
     if (self.dice.count == 0)
     {
+        
         [self farkleAlert];
     }
 }
@@ -289,56 +272,30 @@
 {
     for (DieLabel *label in self.dice)
     {
-        if ([label.text isEqual:@"1"])
+        if (self.diceOneCount >= 1)
         {
-            self.diceOneCount++;
-            if (self.diceOneCount == 1)
-            {
                 return YES;
-            }
         }
-        else if ([label.text isEqual:@"5"])
+        else if (self.diceFiveCount >= 1)
         {
-            self.diceFiveCount++;
-            if (self.diceFiveCount == 1)
-            {
                 return YES;
-            }
         }
-        else if ([label.text isEqual:@"2"])
+        else if (self.diceTwoCount >= 3)
         {
-            self.diceTwoCount++;
-            if (self.diceTwoCount == 3)
-            {
                 return YES;
-            }
         }
-        else if ([label.text isEqual:@"3"])
+        else if (self.diceThreeCount >= 3)
         {
-            self.diceThreeCount++;
-            if (self.diceThreeCount == 3)
-            {
                 return YES;
-            }
-
         }
-        else if ([label.text isEqual:@"4"])
+        else if (self.diceFourCount >= 3)
         {
-            self.diceFourCount++;
-            if (self.diceFourCount == 3)
-            {
                 return YES;
-            }
         }
-        else if ([label.text isEqual:@"6"])
+        else if (self.diceSixCount >= 3)
         {
-            self.diceSixCount++;
-            if (self.diceSixCount == 3)
-            {
                 return YES;
-            }
         }
-        [self resetDiceCount];
     }
     return NO;
 }
@@ -351,6 +308,37 @@
         for (DieLabel *label in self.dice)
         {
             [label roll];
+            if ([label.text isEqual: @"1"])
+            {
+                self.diceOneCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceOne"]];
+            }
+            if ([label.text isEqual: @"2"])
+            {
+                self.diceTwoCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceTwo"]];
+            }
+            if ([label.text isEqual: @"3"])
+            {
+                self.diceThreeCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceThree"]];
+            }
+            if ([label.text isEqual: @"4"])
+            {
+                self.diceFourCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceFour"]];
+            }
+            if ([label.text isEqual: @"5"])
+            {
+                self.diceFiveCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceFive"]];
+            }
+            if ([label.text isEqual: @"6"])
+            {
+                self.diceSixCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceSix"]];
+            }
+
         }
         if ([self hotDice])
         {
@@ -363,13 +351,50 @@
         for (DieLabel *label in self.dice)
         {
             [label roll];
+            if ([label.text isEqual: @"1"])
+            {
+                self.diceOneCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceOne"]];
+            }
+            if ([label.text isEqual: @"2"])
+            {
+                self.diceTwoCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceTwo"]];
+            }
+            if ([label.text isEqual: @"3"])
+            {
+                self.diceThreeCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceThree"]];
+            }
+            if ([label.text isEqual: @"4"])
+            {
+                self.diceFourCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceFour"]];
+            }
+            if ([label.text isEqual: @"5"])
+            {
+                self.diceFiveCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceFive"]];
+            }
+            if ([label.text isEqual: @"6"])
+            {
+                self.diceSixCount++;
+                label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"diceSix"]];
+            }
+
         }
     }
 
-    if(![self keepPlaying])
+    if ([self keepPlaying])
     {
+        [self resetDiceCount];
+    }
+    else
+    {
+        [self resetDiceCount];
         [self farkleAlert];
     }
+
     self.rollButtonTapCount++;
 }
 
@@ -419,6 +444,8 @@
             }
 
             [self.dice removeObject:label];
+
+
     }
 }
 
